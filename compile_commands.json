@@ -1,42 +1,27 @@
 [
 {
   "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/src/main.cpp.o -c /home/dan/src/minitube/src/main.cpp",
+  "command": "/usr/bin/c++    -pthread -Iinclude -std=gnu++20 -o CMakeFiles/minitube.dir/src/main.cpp.o -c /home/dan/src/minitube/src/main.cpp",
   "file": "/home/dan/src/minitube/src/main.cpp"
 },
 {
   "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o -c /home/dan/src/minitube/src/tui/tabs/home.cpp",
+  "command": "/usr/bin/c++    -pthread -Iinclude -std=gnu++20 -o CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o -c /home/dan/src/minitube/src/tui/tabs/home.cpp",
   "file": "/home/dan/src/minitube/src/tui/tabs/home.cpp"
 },
 {
   "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o -c /home/dan/src/minitube/src/tui/tabs/tab.cpp",
+  "command": "/usr/bin/c++    -pthread -Iinclude -std=gnu++20 -o CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o -c /home/dan/src/minitube/src/tui/tabs/tab.cpp",
   "file": "/home/dan/src/minitube/src/tui/tabs/tab.cpp"
 },
 {
   "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/src/tui/tui.cpp.o -c /home/dan/src/minitube/src/tui/tui.cpp",
+  "command": "/usr/bin/c++    -pthread -Iinclude -std=gnu++20 -o CMakeFiles/minitube.dir/src/tui/tui.cpp.o -c /home/dan/src/minitube/src/tui/tui.cpp",
   "file": "/home/dan/src/minitube/src/tui/tui.cpp"
 },
 {
   "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/src/tui/utils.cpp.o -c /home/dan/src/minitube/src/tui/utils.cpp",
+  "command": "/usr/bin/c++    -pthread -Iinclude -std=gnu++20 -o CMakeFiles/minitube.dir/src/tui/utils.cpp.o -c /home/dan/src/minitube/src/tui/utils.cpp",
   "file": "/home/dan/src/minitube/src/tui/utils.cpp"
-},
-{
-  "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/videx/src/extractor.cpp.o -c /home/dan/src/minitube/videx/src/extractor.cpp",
-  "file": "/home/dan/src/minitube/videx/src/extractor.cpp"
-},
-{
-  "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/videx/src/requests.cpp.o -c /home/dan/src/minitube/videx/src/requests.cpp",
-  "file": "/home/dan/src/minitube/videx/src/requests.cpp"
-},
-{
-  "directory": "/home/dan/src/minitube",
-  "command": "/usr/bin/c++     -pthread -Iinclude   -std=gnu++2a -o CMakeFiles/minitube.dir/videx/src/videx.cpp.o -c /home/dan/src/minitube/videx/src/videx.cpp",
-  "file": "/home/dan/src/minitube/videx/src/videx.cpp"
 }
 ]

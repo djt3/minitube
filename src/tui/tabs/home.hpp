@@ -3,7 +3,7 @@
 namespace tui {
   class home : public tab {
   public:
-    void draw();
+    void draw() override;
 
     std::string get_title() override;
   };

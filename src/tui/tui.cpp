@@ -2,28 +2,86 @@
 #include "tabs/tab.hpp"
 #include "utils.hpp"
 
+#include <chrono>
 #include <iostream>
+#include <sys/ioctl.h>
+#include <thread>
+
+tui::tab *active_tab = nullptr;
 
 void tui::initialize() {
   utils::clear(true);
   utils::hide_cursor();
+  utils::disable_input();
+
+  active_tab = new tab();
+  list_entry item;
+
+  for (int i = 0; i < 5; i++) {
+    active_tab->m_items.push_back(item);
+  }
+}
+
+bool closing = false;
+
+void input_loop() {
+  while (!closing) {
+    char input;
+    read(0, &input, 1);
+
+    if (input == 'q') {
+      tui::uninitialize();
+      return;
+    }
+
+    else if (active_tab) {
+      active_tab->process_input(input);
+    }
+  }
 }
 
 void tui::uninitialize() {
   utils::clear(true);
   utils::show_cursor();
+  utils::enable_input();
+
+  closing = true;
 }
 
-tui::tab *active_tab = nullptr;
+void tui::run() {
+  int last_dimensions = 0;
 
-void tui::draw() {
-  if (utils::get_terminal_height() < 2)
-    return;
+  std::thread input_thread(input_loop);
+  input_thread.detach();
 
-  utils::clear();
+  while (!closing) {
+    if (utils::get_terminal_height() < 2)
+      return;
 
-  std::cout << "hello\n";
+    winsize size = utils::get_terminal_size();
+    int dimensions = size.ws_col % size.ws_row;
 
-  if (!active_tab)
-    return;
+    if (dimensions != last_dimensions) {
+      last_dimensions = dimensions;
+      utils::clear(true);
+    }
+
+    utils::clear();
+
+    if (!active_tab)
+      continue;
+
+    utils::print_line(active_tab->get_title(), "", utils::color::black,
+                      utils::color::white);
+
+    utils::cursor_y++;
+
+    active_tab->draw();
+
+    utils::move_cursor(0, utils::get_terminal_height());
+    utils::print_line("hello left", "hello right", utils::color::black,
+                      utils::color::white);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+  }
 }

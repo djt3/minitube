@@ -1,12 +1,14 @@
 file(REMOVE_RECURSE
   "CMakeFiles/minitube.dir/src/main.cpp.o"
+  "CMakeFiles/minitube.dir/src/main.cpp.o.d"
   "CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o"
+  "CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o.d"
   "CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o"
+  "CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o.d"
   "CMakeFiles/minitube.dir/src/tui/tui.cpp.o"
+  "CMakeFiles/minitube.dir/src/tui/tui.cpp.o.d"
   "CMakeFiles/minitube.dir/src/tui/utils.cpp.o"
-  "CMakeFiles/minitube.dir/videx/src/extractor.cpp.o"
-  "CMakeFiles/minitube.dir/videx/src/requests.cpp.o"
-  "CMakeFiles/minitube.dir/videx/src/videx.cpp.o"
+  "CMakeFiles/minitube.dir/src/tui/utils.cpp.o.d"
   "minitube"
   "minitube.pdb"
 )

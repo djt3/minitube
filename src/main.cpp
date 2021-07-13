@@ -1,16 +1,14 @@
-#include <chrono>
-#include <thread>
-#include <iostream>
-
 #include "tui/tui.hpp"
 
+#include <iostream>
+#include <signal.h>
+
 int main() {
+  signal(SIGINT, [](int sig) { tui::uninitialize(); });
+
   tui::initialize();
 
-  while (true) {
-    tui::draw();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-  }
+  tui::run();
 
   return 0;
 }

@@ -1,22 +1,18 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dan/src/minitube/src/main.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/src/main.cpp.o"
-  "/home/dan/src/minitube/src/tui/tabs/home.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o"
-  "/home/dan/src/minitube/src/tui/tabs/tab.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o"
-  "/home/dan/src/minitube/src/tui/tui.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/src/tui/tui.cpp.o"
-  "/home/dan/src/minitube/src/tui/utils.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/src/tui/utils.cpp.o"
-  "/home/dan/src/minitube/videx/src/extractor.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/videx/src/extractor.cpp.o"
-  "/home/dan/src/minitube/videx/src/requests.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/videx/src/requests.cpp.o"
-  "/home/dan/src/minitube/videx/src/videx.cpp" "/home/dan/src/minitube/CMakeFiles/minitube.dir/videx/src/videx.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/dan/src/minitube/src/main.cpp" "CMakeFiles/minitube.dir/src/main.cpp.o" "gcc" "CMakeFiles/minitube.dir/src/main.cpp.o.d"
+  "/home/dan/src/minitube/src/tui/tabs/home.cpp" "CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o" "gcc" "CMakeFiles/minitube.dir/src/tui/tabs/home.cpp.o.d"
+  "/home/dan/src/minitube/src/tui/tabs/tab.cpp" "CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o" "gcc" "CMakeFiles/minitube.dir/src/tui/tabs/tab.cpp.o.d"
+  "/home/dan/src/minitube/src/tui/tui.cpp" "CMakeFiles/minitube.dir/src/tui/tui.cpp.o" "gcc" "CMakeFiles/minitube.dir/src/tui/tui.cpp.o.d"
+  "/home/dan/src/minitube/src/tui/utils.cpp" "CMakeFiles/minitube.dir/src/tui/utils.cpp.o" "gcc" "CMakeFiles/minitube.dir/src/tui/utils.cpp.o.d"
   )
 
 # Targets to which this target links.
