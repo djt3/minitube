@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dan/src/minitube/src/main.cpp
+iostream
+-
+../videx/src/videx.hpp
+/home/dan/src/minitube/videx/src/videx.hpp
+../videx/src/requests.hpp
+/home/dan/src/minitube/videx/src/requests.hpp
+
+/home/dan/src/minitube/videx/src/requests.hpp
+string
+-
+
+/home/dan/src/minitube/videx/src/video.hpp
+string
+-
+
+/home/dan/src/minitube/videx/src/videx.hpp
+vector
+-
+video.hpp
+/home/dan/src/minitube/videx/src/video.hpp
+

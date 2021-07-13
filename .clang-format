@@ -1,0 +1,6 @@
+﻿---
+AllowShortFunctionsOnASingleLine: None
+CompactNamespaces: 'false'
+NamespaceIndentation: All
+
+...

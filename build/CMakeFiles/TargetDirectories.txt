@@ -1,0 +1,7 @@
+/home/dan/src/minitube/build/CMakeFiles/install/strip.dir
+/home/dan/src/minitube/build/CMakeFiles/install/local.dir
+/home/dan/src/minitube/build/CMakeFiles/install.dir
+/home/dan/src/minitube/build/CMakeFiles/list_install_components.dir
+/home/dan/src/minitube/build/CMakeFiles/rebuild_cache.dir
+/home/dan/src/minitube/build/CMakeFiles/edit_cache.dir
+/home/dan/src/minitube/build/CMakeFiles/minitube.dir
