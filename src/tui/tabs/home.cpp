@@ -1,5 +1,6 @@
 #include "home.hpp"
 #include "../../../videx/src/videx.hpp"
+#include "../utils.hpp"
 
 #include <thread>
 
@@ -15,9 +16,12 @@ void tui::home::draw() {
 
   if (queue_playback) {
     queue_playback = false;
-    system(
-        ("mpv \"https://www.youtube.com" + m_videos[m_selected_item].url + "\" > /dev/null")
-            .c_str());
+    system(("mpv \"https://www.youtube.com" + m_videos[m_selected_item].url +
+            "\" > /dev/null")
+               .c_str());
+
+    // clear mpv text from the screen - force a redraw
+    utils::clear(true);
   }
 
   tab::draw();

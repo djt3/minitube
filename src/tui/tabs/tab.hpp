@@ -1,3 +1,6 @@
+#ifndef _TABS_TAB_H_
+#define _TABS_TAB_H_
+
 #include <string>
 #include <vector>
 
@@ -21,7 +24,10 @@ namespace tui {
 
     virtual void process_input(char input);
 
+    int m_scroll_offset = 0;
     int m_selected_item = 0;
     std::vector<list_entry> m_items;
   };
 } // namespace tui
+
+#endif

@@ -1,5 +1,6 @@
 #include "tui.hpp"
 #include "tabs/home.hpp"
+#include "tabs/search.hpp"
 #include "utils.hpp"
 
 #include <chrono>
@@ -7,14 +8,19 @@
 #include <sys/ioctl.h>
 #include <thread>
 
-tui::tab *active_tab = nullptr;
+std::vector<tui::tab *> tabs;
+int tab_index = 0;
 
 void tui::initialize() {
   utils::clear(true);
   utils::hide_cursor();
   utils::disable_input();
 
-  active_tab = new home();
+  tui::home *home_tab = new tui::home();
+  tui::search* search_tab = new tui::search();
+
+  tabs.push_back(home_tab);
+  tabs.push_back(search_tab);
 }
 
 bool closing = false;
@@ -24,13 +30,20 @@ void input_loop() {
     char input;
     read(0, &input, 1);
 
-    if (input == 'q') {
+    switch (input) {
+    case 'q':
       tui::uninitialize();
-      return;
-    }
+      break;
 
-    else if (active_tab) {
-      active_tab->process_input(input);
+    case 0x9: // tab
+      tab_index++;
+      tab_index %= tabs.size();
+      tui::utils::clear(true);
+      break;
+
+    default:
+      tabs[tab_index]->process_input(input);
+      break;
     }
   }
 }
@@ -63,15 +76,12 @@ void tui::run() {
 
     utils::clear();
 
-    if (!active_tab)
-      continue;
-
-    utils::print_line(active_tab->get_title(), "", utils::color::black,
+    utils::print_line(tabs[tab_index]->get_title(), "", utils::color::black,
                       utils::color::white);
 
     utils::cursor_y++;
 
-    active_tab->draw();
+    tabs[tab_index]->draw();
 
     utils::move_cursor(0, utils::get_terminal_height());
     utils::print_line("hello left", "hello right", utils::color::black,

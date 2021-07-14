@@ -1,3 +1,6 @@
+#ifndef _UTILS_H_
+#define _UTILS_H_
+
 #include <string>
 
 struct winsize;
@@ -35,3 +38,5 @@ namespace tui::utils {
   extern void print_text(const std::string& text, color text_color = color::white, color background_color = color::black);
   extern void print_line(const std::string& left_text, const std::string& right_text, color text_color = color::white, color background_color = color::black);
 } // namespace tui::utils
+
+#endif

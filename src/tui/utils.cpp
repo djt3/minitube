@@ -25,23 +25,6 @@ namespace tui::utils {
     move_cursor(x, y);
   }
 
-  void clear(bool full_clear) {
-    set_text_color(color::white);
-    set_background_color(color::black);
-
-    fflush(stdout);
-
-    if (full_clear) {
-      system("clear");
-    }
-
-    else {
-      move_cursor(0, 0);
-    }
-
-    fflush(stdout);
-  }
-
   winsize get_terminal_size() {
     winsize size;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
@@ -113,6 +96,26 @@ namespace tui::utils {
   std::vector<std::pair<std::string, std::string>> line_cache;
 
   int draw_count = 0;
+
+  void clear(bool full_clear) {
+    set_text_color(color::white);
+    set_background_color(color::black);
+
+    fflush(stdout);
+
+    if (full_clear) {
+      system("clear");
+
+      // force all lines to be redrawn
+      last_dimensions = 0;
+    }
+
+    else {
+      move_cursor(0, 0);
+    }
+
+    fflush(stdout);
+  }
 
   void print_line(const std::string &left_text, const std::string &right_text,
                   color text_color, color background_color) {
