@@ -1,5 +1,5 @@
 #include "tui.hpp"
-#include "tabs/tab.hpp"
+#include "tabs/home.hpp"
 #include "utils.hpp"
 
 #include <chrono>
@@ -14,12 +14,7 @@ void tui::initialize() {
   utils::hide_cursor();
   utils::disable_input();
 
-  active_tab = new tab();
-  list_entry item;
-
-  for (int i = 0; i < 5; i++) {
-    active_tab->m_items.push_back(item);
-  }
+  active_tab = new home();
 }
 
 bool closing = false;
@@ -59,7 +54,7 @@ void tui::run() {
       return;
 
     winsize size = utils::get_terminal_size();
-    int dimensions = size.ws_col % size.ws_row;
+    int dimensions = size.ws_col % size.ws_row + size.ws_row;
 
     if (dimensions != last_dimensions) {
       last_dimensions = dimensions;

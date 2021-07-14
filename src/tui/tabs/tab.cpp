@@ -11,9 +11,9 @@ void tui::tab::draw() {
     utils::move_cursor(0, utils::cursor_y + 1);
 
     if (i == m_selected_item) {
-      utils::print_line("hello", "", utils::color::black, utils::color::white);
+      utils::print_line(m_items[i].m_left, m_items[i].m_right, utils::color::black, utils::color::white);
     } else {
-      utils::print_line("hello", "", utils::color::white, utils::color::black);
+      utils::print_line(m_items[i].m_left, m_items[i].m_right, utils::color::white, utils::color::black);
     }
   }
 }

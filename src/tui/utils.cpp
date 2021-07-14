@@ -120,11 +120,11 @@ namespace tui::utils {
     winsize size = get_terminal_size();
 
     int color =
-        static_cast<int>(text_color) % static_cast<int>(background_color);
-    int dimensions = size.ws_col % size.ws_row;
+        static_cast<int>(text_color) % static_cast<int>(background_color) + static_cast<int>(background_color);
+    int dimensions = size.ws_col % size.ws_row + size.ws_row;
 
     // size of the terminal changed, refresh the cache
-    if (dimensions != last_dimensions || color != color_cache[cursor_y]) {
+    if (dimensions != last_dimensions) {
       last_dimensions = dimensions;
 
       line_cache.clear();
@@ -132,6 +132,7 @@ namespace tui::utils {
       color_cache.resize(size.ws_row + 1);
     }
 
+    // draw call is idential to cached one
     else if (line_cache[cursor_y].first == left_text &&
              line_cache[cursor_y].second == right_text &&
              color_cache[cursor_y] == color) {
@@ -157,7 +158,7 @@ namespace tui::utils {
 
     move_cursor(0, cursor_y);
 
-    printf("%s", (left_text + std::to_string(draw_count)).c_str());
+    printf("%s", left_text.c_str());
 
     move_cursor(terminal_width - right_text.length() + 1, cursor_y);
 
