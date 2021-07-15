@@ -14,6 +14,7 @@ Minitube is a TUI (Terminal UI) youtube client, successor to tuitube. Videos are
 ## Dependencies
 - MPV
 - Curlpp (libcurlpp in the AUR)
+- CMake
 
 ## Build instructions
 `git clone https://github.com/djt3/minitube
