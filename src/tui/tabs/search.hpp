@@ -1,19 +1,20 @@
 #ifndef _TABS_SEARCH_H_
 #define _TABS_SEARCH_H_
 
-#include "../../../videx/src/video.hpp"
-#include "tab.hpp"
+#include "video_tab.hpp"
 
 namespace tui {
-  class search : public tab {
+  class search : public video_tab {
   public:
     void draw() override;
     void process_input(char input) override;
 
     std::string get_title() override;
+    std::string get_source_url() override;
 
   private:
-    std::vector<videx::video> m_videos;
+    bool m_in_results_view = false;
+    std::string m_search_text = "";
   };
 } // namespace tui
 

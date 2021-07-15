@@ -24,6 +24,7 @@ namespace tui {
 
     virtual void process_input(char input);
 
+  protected:
     int m_scroll_offset = 0;
     int m_selected_item = 0;
     std::vector<list_entry> m_items;

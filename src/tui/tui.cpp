@@ -5,6 +5,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <mutex>
 #include <sys/ioctl.h>
 #include <thread>
 
@@ -17,18 +18,21 @@ void tui::initialize() {
   utils::disable_input();
 
   tui::home *home_tab = new tui::home();
-  tui::search* search_tab = new tui::search();
+  tui::search *search_tab = new tui::search();
 
   tabs.push_back(home_tab);
   tabs.push_back(search_tab);
 }
 
 bool closing = false;
+std::mutex mutex;
 
 void input_loop() {
   while (!closing) {
     char input;
     read(0, &input, 1);
+
+    mutex.lock();
 
     switch (input) {
     case 'q':
@@ -45,6 +49,8 @@ void input_loop() {
       tabs[tab_index]->process_input(input);
       break;
     }
+
+    mutex.unlock();
   }
 }
 
@@ -74,6 +80,8 @@ void tui::run() {
       utils::clear(true);
     }
 
+    mutex.lock();
+
     utils::clear();
 
     utils::print_line(tabs[tab_index]->get_title(), "", utils::color::black,
@@ -87,6 +95,7 @@ void tui::run() {
     utils::print_line("hello left", "hello right", utils::color::black,
                       utils::color::white);
 
+    mutex.unlock();
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
   }
 }
