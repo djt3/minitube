@@ -13,6 +13,9 @@ Minitube is a TUI (Terminal UI) youtube client, successor to tuitube. Videos are
 
 ## Build instructions
 `git clone https://github.com/djt3/minitube
+
 cd minitube
+
 cmake .
+
 make`
