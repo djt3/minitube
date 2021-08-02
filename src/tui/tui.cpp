@@ -1,7 +1,8 @@
 #include "tui.hpp"
+#include "utils.hpp"
 #include "tabs/home.hpp"
 #include "tabs/search.hpp"
-#include "utils.hpp"
+#include "tabs/related.hpp"
 
 #include <chrono>
 #include <iostream>
@@ -11,6 +12,7 @@
 
 std::vector<tui::tab *> tabs;
 int tab_index = 0;
+bool esc = true;
 
 void tui::initialize() {
   utils::clear(true);
@@ -19,6 +21,7 @@ void tui::initialize() {
 
   tui::home *home_tab = new tui::home();
   tui::search *search_tab = new tui::search();
+  //tui::related related_tabs[10];
 
   tabs.push_back(home_tab);
   tabs.push_back(search_tab);
@@ -29,25 +32,28 @@ std::mutex mutex;
 
 void input_loop() {
   while (!closing) {
-    char input;
+    int input;
     read(0, &input, 1);
 
     mutex.lock();
 
-    switch (input) {
-    case 'q':
-      tui::uninitialize();
-      break;
+    switch (input * (esc? -1 : 1)) {
+ 	case -'q':
+		tui::uninitialize();
+ 	break;
 
-    case 0x9: // tab
-      tab_index++;
-      tab_index %= tabs.size();
-      tui::utils::clear(true);
-      break;
+	case -'l': // tab
+		moveTab(1);
+		goto _processInput;
+	break;
 
-    default:
-      tabs[tab_index]->process_input(input);
-      break;
+ 	case -'h': //tab
+		moveTab(-1);
+
+	default:
+		_processInput:
+		tabs[tab_index]->process_input(input*(esc? -1:1));
+    	break;
     }
 
     mutex.unlock();
@@ -92,10 +98,23 @@ void tui::run() {
     tabs[tab_index]->draw();
 
     utils::move_cursor(0, utils::get_terminal_height());
-    utils::print_line("hello left", "hello right", utils::color::black,
-                      utils::color::white);
+    if(esc){
+    	utils::print_line("", "[ESC]", utils::color::black, utils::color::white);  
+    }else{
+    	utils::print_line("", "[INS]", utils::color::black, utils::color::white);
+    }
 
     mutex.unlock();
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
   }
+}
+
+void moveTab(int input){
+	tab_index += input;
+	tab_index %= tabs.size();
+	tui::utils::clear(true);
+}
+
+void setESC(bool input){
+	esc = input;
 }
