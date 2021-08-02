@@ -22,7 +22,7 @@ namespace tui {
 
     virtual std::string get_title();
 
-    virtual void process_input(char input);
+    virtual void process_input(int input);
 
   protected:
     int m_scroll_offset = 0;
