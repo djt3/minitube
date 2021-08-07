@@ -4,7 +4,7 @@ void tui::home::draw() {
   video_tab::draw();
 }
 
-void tui::home::process_input(char input) {
+void tui::home::process_input(int input) {
  video_tab::process_input(input) ;
 }
 

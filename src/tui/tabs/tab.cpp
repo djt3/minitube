@@ -1,4 +1,5 @@
 #include "tab.hpp"
+#include "../tui.hpp"
 #include "../utils.hpp"
 
 void tui::tab::draw() {
@@ -15,14 +16,15 @@ void tui::tab::draw() {
                         utils::color::white, utils::color::black);
     }
   }
+
 }
 
 std::string tui::tab::get_title() {
   return "default title";
 }
 
-void tui::tab::process_input(char input) {
-  switch (input) {
+void tui::tab::process_input(int input) {
+  switch (-input) {
   case 'j':
     m_selected_item++;
     break;
@@ -39,7 +41,7 @@ void tui::tab::process_input(char input) {
 
   int terminal_height = utils::get_terminal_height();
 
-  int scroll_start;
+  int scroll_start=0;
 
   if (m_items.size() >= terminal_height - 2) {
     while (terminal_height - m_selected_item + m_scroll_offset <= 2) {

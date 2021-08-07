@@ -7,4 +7,7 @@ namespace tui {
   extern void run();
 }
 
+void setESC(bool input);
+void moveTab(int input);
+
 #endif

@@ -8,7 +8,7 @@ namespace tui {
   class video_tab : public tab {
   public:
     virtual void draw() override;
-    virtual void process_input(char input) override;
+    virtual void process_input(int input);
 
     virtual std::string get_title() override = 0;
 

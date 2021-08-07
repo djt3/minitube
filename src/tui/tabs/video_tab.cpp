@@ -13,15 +13,15 @@ void tui::video_tab::draw() {
   tab::draw();
 }
 
-void tui::video_tab::process_input(char input) {
-  switch (input) {
+void tui::video_tab::process_input(int input) {
+  switch (-input) {
   case 'r':
     refresh();
     break;
 
   case 0xA: // enter
-    system(("mpv \"https://www.youtube.com" + m_videos[m_selected_item].url +
-            "\" > /dev/null")
+    system(("nohup mpv \"https://www.youtube.com" + m_videos[m_selected_item].url +
+            "\" 2>&1 &")
                .c_str());
 
     // clear mpv text from the screen - force a redraw
