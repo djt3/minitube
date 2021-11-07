@@ -21,7 +21,7 @@ void tui::video_tab::process_input(int input) {
 
   case 0xA: // enter
     system(("nohup mpv \"https://www.youtube.com" + m_videos[m_selected_item].url +
-            "\" 2>&1 &")
+            "\" >/dev/null 2>&1 &")
                .c_str());
 
     // clear mpv text from the screen - force a redraw
